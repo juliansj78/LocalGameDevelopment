@@ -27,6 +27,8 @@
     <Content Include="images\background.png" />
     <Content Include="images\bullet.png" />
     <Content Include="images\bullet3.png" />
+    <Content Include="images\bunny16.png" />
+    <Content Include="images\explosion64.png" />
     <Content Include="images\space-invader-icon-64.png" />
     <Content Include="images\space-invaders-64.png" />
     <Content Include="images\ufo.png" />

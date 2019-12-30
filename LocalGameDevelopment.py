@@ -25,11 +25,13 @@ playerX_change = 0
 
 #Enemy
 enemyImg = []
+enemyExplosion = []
 enemyX = []
 enemyY = []
 enemyX_change = []
 enemyY_change = []
-num_of_enemies = 6
+num_of_enemies = 11
+enemyExplosion =pygame.image.load('./images/explosion64.png')
 
 for i in range(num_of_enemies):
     enemyImg.append(pygame.image.load('./images/space-invader-icon-64.png'))
@@ -41,7 +43,7 @@ for i in range(num_of_enemies):
 # Bullet 
 # Ready - You can't see the bullet on the screen
 # Fire - The bullet is currently moving
-bulletImg = pygame.image.load('./images/bullet4.png')
+bulletImg = pygame.image.load('./images/bunny16.png')
 bulletX = 0
 bulletY = 480
 bulletX_change = 0
@@ -74,6 +76,7 @@ def fire_bullet(x,y):
 def isCollision(enemyX,enemyY, bulletX, bulletY):
     distance = math.sqrt((math.pow(enemyX-bulletX,2)) + (math.pow(enemyY-bulletY,2)))
     if distance <27:
+        screen.blit(enemyExplosion,(enemyX,enemyY))
         return True
     else: 
         return False
