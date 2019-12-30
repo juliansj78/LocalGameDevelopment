@@ -32,9 +32,13 @@
     <Content Include="images\space-invader-icon-64.png" />
     <Content Include="images\space-invaders-64.png" />
     <Content Include="images\ufo.png" />
+    <Content Include="sounds\background.wav" />
+    <Content Include="sounds\explosion.wav" />
+    <Content Include="sounds\laser.wav" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />
+    <Folder Include="sounds\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
