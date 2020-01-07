@@ -36,14 +36,15 @@ enemyX = []
 enemyY = []
 enemyX_change = []
 enemyY_change = []
-num_of_enemies = 6
+num_of_enemies = 8
+remaining_enemies = num_of_enemies
 enemyExplosion =pygame.image.load('./images/explosion64.png')
 
 for i in range(num_of_enemies):
     enemyImg.append(pygame.image.load('./images/space-invader-icon-64.png'))
     enemyX.append(random.randint(0,735))
     enemyY.append(random.randint(50,150))
-    enemyX_change.append(4)
+    enemyX_change.append(16)
     enemyY_change.append(40)
 
 # Bullet 
@@ -53,7 +54,7 @@ bulletImg = pygame.image.load('./images/bunny16.png')
 bulletX = 0
 bulletY = 480
 bulletX_change = 0
-bulletY_change = 10
+bulletY_change = 20
 bullet_state = "ready"
 
 # Score
@@ -66,7 +67,6 @@ textY = 10
 
 # Game Over Text
 over_font = pygame.font.Font('freesansbold.ttf',64)
-
 
 def show_score(x,y):
     score = font.render("Score :" + str(score_value),True, (255,255,255))
@@ -133,18 +133,21 @@ while running:
 # Enemy movement
     for i in range(num_of_enemies):
         # Game Over
+        
+       # if remaining_enemies<1:
+        #    game_over_text()
         if enemyY[i] > 400:
-            for j in range(num_of_enemies):
-                enemyY[j] = 2000
-            game_over_text()
-            break
+                for j in range(num_of_enemies):
+                    enemyY[j] = 2000
+                game_over_text()
+                break
 
         enemyX[i] += enemyX_change[i]       
         if enemyX[i] <= 0:
-            enemyX_change[i] = 4
+            enemyX_change[i] = 10
             enemyY[i] += enemyY_change[i]
         elif enemyX[i] >= 736:
-            enemyX_change[i] = -4
+            enemyX_change[i] = -10
             enemyY[i] += enemyY_change[i]
 
 # Collision
@@ -156,8 +159,13 @@ while running:
             bulletY=480
             bullet_state="ready"
             score_value += 1
+            #uncomment next two lines to respawn enemies at random coordinates
             enemyX[i] = random.randint(0,735)
             enemyY[i] = random.randint(50,150)
+
+            #enemyY[i] = -2000
+            remaining_enemies +=-1 
+
             
         enemy(enemyX[i],enemyY[i], i)
 
